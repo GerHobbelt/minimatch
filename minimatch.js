@@ -1,8 +1,6 @@
 module.exports = minimatch
 minimatch.Minimatch = Minimatch
 
-var path = { sep: '/' }
-
 var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {}
 var expand = require('brace-expansion')
 
@@ -115,11 +113,6 @@ function Minimatch (pattern, options) {
 
   if (!options) options = {}
   pattern = pattern.trim()
-
-  // windows support: need to use /, not \
-  if (path.sep !== '/') {
-    pattern = pattern.split(path.sep).join('/')
-  }
 
   this.options = options
   this.set = []
@@ -704,11 +697,6 @@ function match (f, partial) {
   if (f === '/' && partial) return true
 
   var options = this.options
-
-  // windows: need to use /, not \
-  if (path.sep !== '/') {
-    f = f.split(path.sep).join('/')
-  }
 
   // treat the test path as a set of pathparts.
   f = f.split(slashSplit)
