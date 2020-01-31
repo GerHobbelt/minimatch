@@ -355,7 +355,6 @@ function parse (pattern, isSub) {
         // the glob [!a] means [^a] in regexp
         if (inClass) {
           this.debug('  in class')
-          if (c === '!' && i === classStart + 1) c = '^'
           re += c
           continue
         }
