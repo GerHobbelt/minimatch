@@ -2,14 +2,13 @@
   "name": "@gerhobbelt/minimatch",
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
   "description": "a glob matcher in javascript",
-  "version": "3.0.4-1",
+  "version": "3.0.4-2",
   "repository": "GerHobbelt/minimatch",
   "main": "minimatch.js",
   "scripts": {
+    "build": "npm test",
     "test": "tap test/*.js --cov",
-    "preversion": "npm test",
-    "postversion": "npm publish",
-    "postpublish": "git push origin --all; git push origin --tags"
+    "pub": "npm publish --access public"
   },
   "engines": {
     "node": ">=8"
