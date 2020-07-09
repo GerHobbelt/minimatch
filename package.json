@@ -18,10 +18,10 @@
     "node": "*"
   },
   "dependencies": {
-    "brace-expansion": "^1.1.7"
+    "brace-expansion": "^1.1.11"
   },
   "devDependencies": {
-    "tap": "^10.3.2"
+    "tap": "^14.10.7"
   },
   "license": "ISC",
   "files": [
