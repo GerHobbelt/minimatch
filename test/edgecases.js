@@ -16,7 +16,7 @@ test("should handle pattern starting with paren", function(t) {
   t.end()
 })
 
-test("should handle pattern starting with paren", function(t) {
+test("should handle pattern starting with at+paren", function(t) {
   var p = "@(case)";
   t.equal(minimatch("(case)", p), false);    // ... while the @ here triggers state and thus (...) now is treated as a *grouping* instead, hence this checks for literal 'case'
   t.equal(minimatch("case", p), true);
@@ -131,7 +131,7 @@ test("should ignore pattern starting with exclam and paren", function(t) {
   t.end()
 })
 
-test("should ignore pattern that is a double-negative extglob A", function(t) {
+test("should ignore pattern that is a double-negative extglob", function(t) {
   var p = "!!(case)"
   t.equal(minimatch("(case)", p, { debug: false }), true);
   t.equal(minimatch("case", p), false);
