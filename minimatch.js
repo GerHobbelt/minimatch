@@ -2,11 +2,6 @@ module.exports = minimatch
 minimatch.Minimatch = Minimatch
 
 var path = { sep: '/' }
-/*
-try {
-  path = require('path')
-} catch (er) {}
-*/
 
 var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {}
 var expand = require('brace-expansion')
