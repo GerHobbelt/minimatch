@@ -152,7 +152,7 @@ function make () {
   // step 2: expand braces
   var set = this.globSet = this.braceExpand()
 
-  if (options.debug) this.debug = console.error
+  if (options.debug) this.debug = (typeof options.debug === 'function' ? options.debug : console.error)
 
   this.debug("make step 2:", { pattern: this.pattern, globSet: set })
 
