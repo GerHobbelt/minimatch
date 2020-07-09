@@ -2,7 +2,7 @@
   "name": "@gerhobbelt/minimatch",
   "author": "Isaac Z. Schlueter <i@izs.me> (http://blog.izs.me)",
   "description": "a glob matcher in javascript",
-  "version": "3.0.4-3",
+  "version": "3.0.4-4",
   "repository": "GerHobbelt/minimatch",
   "main": "minimatch.js",
   "scripts": {
