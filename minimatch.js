@@ -40,7 +40,8 @@ function charSet (s) {
 }
 
 // normalizes slashes.
-var slashSplit = /\/+/
+var patternSlashSplit = /\/+/              // <-- patterns can carry \( and other regex escapes and MUST therefor be UNIX formatted paths
+var slashSplit = /\/+/                     // <-- while paths-to-test can be either UNIX or Windows formatted
 
 minimatch.filter = filter
 function filter (pattern, options) {
@@ -99,7 +100,7 @@ function minimatch (p, pattern, options) {
   // "" only matches ""
   if (pattern.trim() === '') return p === ''
 
-  return new Minimatch(pattern, options).match(p)
+  return (new Minimatch(pattern, options)).match(p)
 }
 
 function Minimatch (pattern, options) {
@@ -162,7 +163,7 @@ function make () {
   // set to the GLOBSTAR object for globstar behavior,
   // and will not contain any / characters
   set = this.globParts = set.map(function (s) {
-    return s.split(slashSplit)
+    return s.split(patternSlashSplit)
   })
 
   this.debug("make step 3.A:", { pattern: this.pattern, globSet: set })

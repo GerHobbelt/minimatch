@@ -41,7 +41,7 @@ tap.test('basic tests', function (t) {
 
     t.equivalent(
       actual, expect,
-      JSON.stringify(pattern) + ' ' + JSON.stringify(expect),
+      JSON.stringify({ specification: c, files: f, pattern, options }),
       tapOpts
     )
 
