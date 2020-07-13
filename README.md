@@ -40,9 +40,15 @@ See:
 **Please only use forward-slashes in glob expressions.**
 
 Though windows uses either `/` or `\` as its path separator, only `/`
-characters are used by this glob implementation.  You must use
-forward-slashes **only** in glob expressions.  Back-slashes will always
+characters are used by this glob implementation.  
+
+- You must use
+forward-slashes **only** in glob **pattern** expressions.  Back-slashes will always
 be interpreted as escape characters, not path separators.
+
+- You MAY use either `\` or `/` as path separators in **path** arguments, as these DO NOT have any escape(d) characters.
+
+- Windows drive letters (e.g. `C:`) only match when present in both *path* and *pattern*.
 
 ## Minimatch Class
 

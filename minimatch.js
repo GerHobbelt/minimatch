@@ -40,8 +40,7 @@ function charSet (s) {
 }
 
 // normalizes slashes.
-var patternSlashSplit = /\/+/              // <-- patterns can carry \( and other regex escapes and MUST therefor be UNIX formatted paths
-var slashSplit = /\/+/                     // <-- while paths-to-test can be either UNIX or Windows formatted
+var slashSplit = /\/+/              // <-- patterns can carry \( and other regex escapes and MUST therefor be UNIX formatted paths
 
 minimatch.filter = filter
 function filter (pattern, options) {
@@ -163,7 +162,7 @@ function make () {
   // set to the GLOBSTAR object for globstar behavior,
   // and will not contain any / characters
   set = this.globParts = set.map(function (s) {
-    return s.split(patternSlashSplit)
+    return s.split(slashSplit)
   })
 
   this.debug("make step 3.A:", { pattern: this.pattern, globSet: set })
@@ -709,9 +708,11 @@ function match (f, partial) {
   if (this.comment) return false
   if (this.empty) return f === ''
 
-  if (f === '/' && partial) return true
-
   var options = this.options
+  f = f.replace(/\\/g, '/')   // DOS to UNIX path conversion before anything else
+  this.debug('nowinsep cvt @ match:', { f, pattern: this.pattern, partial })
+
+  if (f === '/' && partial) return true
 
   // treat the test path as a set of pathparts.
   f = f.split(slashSplit)
